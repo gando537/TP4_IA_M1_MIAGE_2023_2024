@@ -7,24 +7,27 @@
     <!--
         <script src="js/testRequestDavinCi.js"></script>
         -->
-    <script type="module" src="js/sendRequestToServer.js"></script>
+    <script type="module" src="./js/sendRequestToServer.js"></script>
 
 </head>
 
 <body>
     <section class="side-bar">
-        <button>New chat</button>
+        <div id="new-chat">
+            <img src="./assets/logo-Miage.jpeg" alt="logo" class="logo">
+            <p>New chat</p>
+        </div>
         <div class="history"></div>
         <nav>
-            <p>Made by Michel B.</p>
+            <p>Made by Gando & Evan</p>
         </nav>
     </section>
     <section class="main">
-        <h1>MiageGPT</h1>
+        <h1 class="h1"></h1>
         <div id="output"></div>
         <div class="bottom-section">
             <div class="input-container">
-                <input>
+                <input type="text" id="input" placeholder="Tapez votre message ici...">
                 <div id="submit">➢</div>
             </div>
         </div>

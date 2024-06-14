@@ -52,6 +52,29 @@ app.post('/chat', upload.none(), async (req, res) => {
         res.json(response);
 });
 
+app.post('/image', upload.none(), async (req, res) => {
+  // get prompt from the form data
+  const prompt = req.body.prompt;
+  console.log("IMAGE PROMPT: ", prompt);
+
+  let nombreVariations = 1;
+  if (req.body.nombreVariations) {
+    const number = parseInt(req.body.nombreVariations, 10);
+    nombreVariations = (number < 1) ? 1 : number;
+  }
+
+  // send the prompt to the OpenAI Dall-E 2 API
+  const response = await openai.images.generate({
+    model: "dall-e-2",
+    prompt: prompt,
+    n: nombreVariations, // nombre de variations
+    size: "256x256",
+  });
+
+  // send the response as json
+  res.json(response);
+});
+
 // start server and listen to port 3001
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
